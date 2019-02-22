@@ -8,7 +8,7 @@
 
 <script type="text/javascript" src="${base}/js/bootstrap-table.js"></script>
 
-<script type="text/javascript" src="${base}/js/bootstrap-zh-CN.min.js"></script>
+<script type="text/javascript" src="${base}/js/bootstrap-table-zh-CN.js"></script>
 
 
 
