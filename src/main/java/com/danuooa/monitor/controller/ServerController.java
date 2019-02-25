@@ -9,6 +9,7 @@ import com.danuooa.monitor.model.Server;
 import com.danuooa.monitor.service.ServerService;
 import com.danuooa.monitor.util.BaseController;
 import com.danuooa.monitor.util.Result;
+import com.danuooa.monitor.util.annotation.PermissionName;
 import com.mcp.validate.annotation.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,6 +65,36 @@ public class ServerController extends BaseController {
             return new Result();
         }
         return new Result("删除失败！");
+    }
+
+    //修改
+    @RequestMapping(value = "update",method = RequestMethod.POST)
+    @PermissionName(value = "更新",parent = "list")
+    @ResponseBody
+    Result update(
+            @Check Long id,
+            @Check String ip,
+            @Check String note,
+            @Check (defaultValue = "0") Short status
+    ){
+       Server server= new Server();
+       server.setId(id);
+       server.setIp(ip);
+       server.setNote(note);
+       server.setStatus(status);
+
+       if (serverService.update(server)){
+           return new Result();
+       }
+       return new Result("操作失败！");
+    }
+
+    @RequestMapping(value = "get",method = RequestMethod.POST)
+    @ResponseBody
+    Result get(
+            @Check Long id
+    ){
+        return new Result(serverService.get(id));
     }
 
 

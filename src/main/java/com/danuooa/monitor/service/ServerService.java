@@ -26,19 +26,33 @@ public class ServerService {
         return serverMapper.getAllServer();
     }
 
+    public Server get(Long id){
+        return serverMapper.selectByPrimaryKey(id);
+    }
+
+    //添加
     public int save(Server server){
         return serverMapper.insertSelective(server);
+    }
+
+    //删除
+    public int delete(Long id){
+        return serverMapper.deleteByPrimaryKey(id);
+    }
+
+    //修改
+    public boolean update(Server server) {
+        if(serverMapper.updateByPrimaryKeySelective(server)==1){
+            return true;
+        }
+        return false;
     }
 
     public boolean exist(Server server){
         if (serverMapper.selectCount(server)>0){
             return true;
         }
-            return false;
-    }
-
-    public int delete(Long id){
-        return serverMapper.deleteByExample(id);
+        return false;
     }
 
 }

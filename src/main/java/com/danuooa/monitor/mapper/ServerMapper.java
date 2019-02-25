@@ -14,4 +14,10 @@ public interface ServerMapper extends BaseMapper<Server> {
 
 
 
+
+
+
+
+
+
 }

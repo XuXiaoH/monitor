@@ -17,7 +17,7 @@
     <div class="navbar-container ace-save-state" id="navbar-container">
         <div class="navbar-header">
             <a href="index.ftl" class="navbar-brand">
-                <small> <i class="fa fa-leaf"></i> 服务器平台 </small>
+                <small> <i class="fa fa-leaf"></i> 服务器监控平台 </small>
             </a>
         </div>
     </div>
@@ -151,13 +151,15 @@
                                                         <i class="ace-icon fa fa-search">查看详情</i>
                                                     </button>
 
-                                                    <button class="btn btn-xs btn-primary" role="update-server">
+                                                    <button class="btn btn-xs btn-primary" role="update-server" tag="${(e.id)!''}">
                                                         <i class="ace-icon fa fa-pencil-square-o">修改</i>
                                                     </button>
 
-                                                    <button class="btn btn-xs btn-danger" role="delete-server" >
+
+                                                    <button class="btn btn-xs btn-danger" role="delete-server" tag="${(e.id)!''}">
                                                         <i class="ace-icon fa fa-trash-o">删除</i>
                                                     </button>
+
                                                 </div>
                                             </td>
                                         </tr>
@@ -569,7 +571,7 @@
                 </div>
             </div>
 
-            <!-- 修改你服务器 -->
+            <!-- 修改服务器 -->
             <div class="modal fade" id="update_server" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content" style="padding: 15px;">
@@ -580,7 +582,8 @@
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <form action="update" method="post" id="filter">
+                                <form action="update" method="post" id="update-filter">
+                                    <input type="hidden" value="" name="id" id="id">
                                     <div class="form-group">
                                         <label for="ip">IP</label>
                                         <input type="text" class="form-control" name="ip" id="ip" placeholder="服务器IP">
@@ -588,6 +591,10 @@
                                     <div class="form-group">
                                         <label for="note">说明</label>
                                         <textarea class="form-control" id="note" name="note" rows="3" placeholder="说明"></textarea>
+                                    </div>
+                                    <div class="form-group" role="status">
+                                        <label>状态</label>
+                                        <input type="text" class="form-control"   name="status"  id="status" placeholder="状态">
                                     </div>
                                 </form>
                             </div>
